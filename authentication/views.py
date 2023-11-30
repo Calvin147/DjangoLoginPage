@@ -17,6 +17,21 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
         
+        if User.objects.filter(username=username):
+            messages.error(request, "Username already exists. Please enter a different username.")
+            return redirect('home')
+        
+        if User.objects.filter(email=email):
+            messages.error(request, "That email address already exists. Please enter a different email.")
+            return redirect('home')
+        
+        if len(username) > 10:
+            messages.error(request, "Username is to long, must be less than 10 characters.")
+            
+        if pass1 != pass2:
+            messages.error(request, "Your passwords do not match. Please try again")
+            
+        
         myuser = User.objects.create_user(username, email, pass1)
         myuser.first_name = fname
         myuser.last_name = lname

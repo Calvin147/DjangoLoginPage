@@ -1,0 +1,14 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.custom-block {
+    border: 2px solid #007bff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
